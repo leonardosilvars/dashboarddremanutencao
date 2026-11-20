@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>O que o DRE conta sobre a manutenção</title>
-<style>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>O que o DRE conta sobre a manutenção?</title><style>
 .cm{--ink:#1b2230;--mut:#5a6372;--line:#e3e6ec;--grid:#e9ecf1;--card:#ffffff;--bg:#f5f7fa;--good:#0b7a3b;--bad:#b4281f;--hov:#f1f4f9;--onbg:#e6f0fc;--onink:#184f95;--thead:#fafbfc;--zero:#aab1be;--cross:rgba(30,50,90,.35);--barhl:rgba(30,50,90,.06);--noteb:#fff7e6;--noteline:#f3dfb0;--notet:#5b4a14;--shadow:rgba(20,30,50,.14);--lead:#12304f;--c-maint:#2a78d6;--c-ebitda:#eb6834;--c-rev:#1baf7a;--c-op:#6250d6;--c-cfo:#6250d6;--c-fin:#e87ba4;--c-capex:#eda100;--c-dep:#6250d6;--c-fully:#1baf7a;--c-lev:#eb6834;color-scheme:light;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.45;padding:20px;border-radius:12px;max-width:1180px;margin:0 auto}
 .cm.dark{--ink:#f0efec;--mut:#c3c2b7;--line:#34332f;--grid:#2c2c29;--card:#1a1a19;--bg:#10100f;--good:#5fd08a;--bad:#ff8f86;--hov:#262624;--onbg:#1f3350;--onink:#a9ccf7;--thead:#20201f;--zero:#6b6a66;--cross:rgba(240,239,236,.4);--barhl:rgba(240,239,236,.08);--noteb:#2b2514;--noteline:#4d4120;--notet:#e9d79a;--shadow:rgba(0,0,0,.55);--lead:#1d3a5e;--c-maint:#3987e5;--c-ebitda:#d95926;--c-rev:#199e70;--c-op:#9085e9;--c-cfo:#9085e9;--c-fin:#d55181;--c-capex:#c98500;--c-dep:#9085e9;--c-fully:#199e70;--c-lev:#d95926;color-scheme:dark}
 .cm *{box-sizing:border-box}
@@ -90,75 +87,118 @@ body{background:#f5f7fa;transition:none}
 body.dark{background:#10100f}
 @media (max-width:520px){.cm{padding:12px}.cm-title{font-size:23px}.cm-reset{margin-left:0}.cm-ev,.cm-more{padding-left:0}}
 @media print{.cm{background:#fff;padding:0}.cm-filters,.cm-reset,.cm-theme{display:none}.cm-card,.cm-kpi,.cm-ins{break-inside:avoid}}
+/* ===== Layout em painel: menu lateral, cards, tema escuro por padrão ===== */
+.cm{max-width:none;margin:0;padding:0;border-radius:0;min-height:100vh;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--card2:rgba(255,255,255,.04)}
+.cm.dark{--bg:#061225;--card:#0d2040;--ink:#eaf0f9;--mut:#aebbd0;--line:rgba(255,255,255,.1);--grid:rgba(255,255,255,.09);--zero:rgba(255,255,255,.35);--hov:rgba(255,255,255,.08);--onbg:#1f6feb;--onink:#fff;--thead:rgba(255,255,255,.05);--good:#35d07f;--bad:#ff6b62;--cross:rgba(255,255,255,.4);--barhl:rgba(255,255,255,.07);--shadow:rgba(0,0,0,.6);--lead:#12345f;--noteb:rgba(255,176,32,.1);--noteline:rgba(255,176,32,.35);--notet:#ffd58a;--c-maint:#4c9bff;--c-ebitda:#ff8a4c;--c-rev:#35d07f;--c-op:#a794ff;--c-cfo:#a794ff;--c-fin:#ff7aa8;--c-capex:#ffb020;--c-dep:#a794ff;--c-fully:#35d07f;--c-lev:#ff8a4c;background:linear-gradient(135deg,#061225 0%,#0a1d3a 55%,#0b2342 100%);background-attachment:fixed}
+.cm:not(.dark){--bg:#eef2f8;background:#eef2f8}
+body,body.dark{background:#061225}
+body:not(.dark){background:#eef2f8}
+.app{display:flex;align-items:flex-start}
+.side{position:sticky;top:0;align-self:flex-start;width:220px;flex:none;height:100vh;display:flex;flex-direction:column;padding:26px 12px 0;background:linear-gradient(180deg,#0a1b35 0%,#0b2347 100%);border-right:1px solid rgba(255,255,255,.07);color:#fff;overflow:hidden}
+.logo{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-size:21px;font-weight:600;line-height:1.1;margin-bottom:30px}
+.logo svg{width:60px;height:60px}
+.nav{display:flex;flex-direction:column;gap:6px}
+.nav a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-size:15px;color:#aebbd0;text-decoration:none}
+.nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav a.on{background:#1f6feb;color:#fff;font-weight:600}
+.nav svg,.kic svg{width:21px;height:21px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tag{margin:auto 14px 12px;font-size:14.5px;font-style:italic;color:#c4d2e6;line-height:1.35;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+.sky{height:130px;margin:0 -12px;flex:none;opacity:.9}
+.main{flex:1;min-width:0;padding:24px 24px 28px;max-width:1500px;margin:0 auto}
+.cm-top{align-items:flex-start}
+.cm-title{font-family:inherit;font-weight:700;font-size:38px;letter-spacing:-.02em;line-height:1.05;margin:0 0 8px;color:var(--ink)}
+.cm-eyebrow{text-transform:none;letter-spacing:0;font-size:15px;margin:0 0 14px;color:var(--mut)}
+.cm-filters,.cm-card,.cm-kpi,.cm-inslist,.cm-foot{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:14px}
+.cm:not(.dark) .cm-filters,.cm:not(.dark) .cm-card,.cm:not(.dark) .cm-kpi,.cm:not(.dark) .cm-inslist,.cm:not(.dark) .cm-foot{background:#fff}
+.cm-filters{padding:10px 14px;gap:10px 16px;margin-bottom:12px}
+.cm-seg{border-radius:9px;background:var(--card2)}
+.cm-seg button{background:transparent;padding:6px 12px}
+.cm-seg button.on{background:#1f6feb;color:#fff}
+.cm-take{font-size:15px;color:var(--ink);margin:0 0 14px}
+.cm-kpis{grid-template-columns:repeat(6,1fr);gap:12px}
+.cm-kpi{position:relative;display:flex;gap:11px;align-items:flex-start;padding:14px 14px 12px;min-width:0}
+.kic{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;margin-top:2px}
+.kbody{flex:1;min-width:0}
+.cm-kpi h3{margin:0 0 2px;font-size:14px;font-weight:600;color:var(--ink)}
+.kn{font-family:inherit;font-weight:700;font-size:28px;letter-spacing:-.01em}
+.ku{font-size:12px}
+.kd{margin-top:5px;font-size:12.5px}
+.kd .kc{display:block}
+.spark{position:absolute;right:10px;bottom:10px;width:64px;height:28px}
+.cm-row{display:grid;gap:12px;margin-bottom:12px}
+.cm-row.a{grid-template-columns:1.55fr 1fr 1.15fr}
+.cm-row.b{grid-template-columns:repeat(3,1fr)}
+.cm-row .cm-card,.cm-card{margin-bottom:0}
+#sec-bal,#sec-tbl{margin-bottom:12px}
+.cm-card{padding:14px 16px}
+.cm-card h2{font-size:17px}
+.cm-chart{min-height:240px}
+.cm-sec{font-family:inherit;font-weight:700;font-size:26px;margin:26px 0 6px;scroll-margin-top:12px}
+#cm-top,#sec-maint,#sec-rel,#sec-fin,#sec-bal,#cm-notes{scroll-margin-top:12px}
+.cm-lead{background:linear-gradient(135deg,#12345f,#0f2a4d);border:1px solid rgba(255,255,255,.1);border-radius:14px}
+.cm-gap{border-radius:14px}
+.cm-insn{background:#1f6feb;color:#fff}
+.cm-more summary{color:#7fb4ff}
+.cm:not(.dark) .cm-more summary{color:#184f95}
+.cm-tbl th{background:var(--thead)}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:8px}
+.gauge .ring{position:relative;width:170px;height:170px}
+.gauge .ring svg{width:170px;height:170px}
+.gauge .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .mid b{font-size:36px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.gauge .mid span{font-size:12px;color:var(--mut);text-align:center;line-height:1.2}
+.legend2{font-size:14.5px;line-height:1.5;color:var(--ink);width:100%}
+.legend2 div{display:flex;justify-content:space-between;gap:8px}
+.legend2 i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+@media (max-width:1280px){.cm-kpis{grid-template-columns:repeat(3,1fr)}.cm-row.a{grid-template-columns:1fr 1fr}.cm-row.a>:first-child{grid-column:1/-1}.cm-row.b{grid-template-columns:1fr 1fr}.cm-row.b>:last-child{grid-column:1/-1}}
+@media (max-width:900px){.app{flex-direction:column;align-items:stretch;width:100%;overflow-x:hidden}.main{width:100%;margin:0}.side{position:static;width:100%;max-width:100vw;box-sizing:border-box;height:auto;flex-direction:row;align-items:center;padding:10px 12px;gap:10px;overflow-x:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}.logo{flex-direction:row;margin:0;font-size:15px}.logo svg{width:30px;height:30px}.nav{flex-direction:row}.nav a{padding:8px 12px;white-space:nowrap;font-size:13.5px}.nav svg{display:none}.tag,.sky{display:none}.main{padding:16px 14px}.cm-title{font-size:28px}.cm-row.a,.cm-row.b{grid-template-columns:1fr}.cm-kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.cm-kpis{grid-template-columns:1fr}.cm-title{font-size:24px}.cm-filters{padding:10px}}
+.ks{margin-right:70px}
 </style></head><body>
-<div class='cm'>
-  <header>
+<div class='cm app'>
+  <aside class='side'>
+    <div class='logo'><svg viewBox='0 0 64 64' fill='none' stroke='currentColor' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M10 54V36M24 54V26M38 54V18M52 54V8'/><circle cx='14' cy='20' r='7'/><path d='M14 10v3M14 27v3M4 20h3M21 20h3M7 13l2 2M19 25l2 2M21 13l-2 2M9 25l-2 2'/></svg><div>Manutenção<br>× DRE</div></div>
+    <nav class='nav' id='nav'><a href='#cm-top' data-nav='cm-top'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Visão geral</span></a><a href='#sec-maint' data-nav='sec-maint'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Manutenção</span></a><a href='#sec-rel' data-nav='sec-rel'><svg viewBox='0 0 24 24' aria-hidden='true'><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><span>Margens</span></a><a href='#sec-fin' data-nav='sec-fin'><svg viewBox='0 0 24 24' aria-hidden='true'><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg><span>Caixa e dívida</span></a><a href='#sec-bal' data-nav='sec-bal'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg><span>Ativos e peças</span></a><a href='#cm-ins-h' data-nav='cm-ins-h'><svg viewBox='0 0 24 24' aria-hidden='true'><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg><span>Leituras</span></a><a href='#cm-notes' data-nav='cm-notes'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>Metodologia</span></a></nav>
+    <div class='tag'>Dados públicos.<br>Estudo educacional.</div>
+    <svg class='sky' viewBox='0 0 210 150' preserveAspectRatio='none' aria-hidden='true'><g fill='#0c1f3d' stroke='#5f9bff' stroke-opacity='.55'><rect x='14' y='70' width='22' height='80'/><rect x='46' y='40' width='10' height='110'/><rect x='62' y='84' width='34' height='66'/><rect x='104' y='58' width='12' height='92'/><rect x='124' y='92' width='40' height='58'/><rect x='172' y='64' width='16' height='86'/><rect x='194' y='100' width='16' height='50'/></g></svg>
+  </aside>
+  <main class='main'>
+  <header id='cm-top'>
     <div class='cm-top'>
       <div>
-        <p class='cm-eyebrow'>Estudo de caso · indústria de base florestal · demonstrações consolidadas de 1T25 a 3T26</p>
         <h1 class='cm-title' id='cm-title'>O que o DRE conta sobre a manutenção?</h1>
+        <p class='cm-eyebrow'>Estudo de caso · indústria de base florestal · demonstrações consolidadas de 1T25 a 3T26</p>
       </div>
-      <div class='cm-theme' id='cm-theme'><span class='cm-fl'>Tema</span><div class='cm-seg' role='group' aria-label='Tema'>
-        <button type='button' data-param='theme' data-value='light'>Claro</button>
-        <button type='button' data-param='theme' data-value='dark'>Escuro</button></div></div>
+      <div class='cm-theme' id='cm-theme'><span class='cm-fl'>Tema</span><div class='cm-seg' role='group' aria-label='Tema'><button type='button' data-param='theme' data-value='light'>Claro</button><button type='button' data-param='theme' data-value='dark'>Escuro</button></div></div>
+    </div>
+    <div class='cm-filters' id='cm-filters'>
+      <div class='cm-fg'><span class='cm-fl'>Período</span><div class='cm-seg' role='group' aria-label='Período'><button type='button' data-param='view' data-value='q'>Trimestre</button><button type='button' data-param='view' data-value='ytd'>Acumulado no ano</button><button type='button' data-param='view' data-value='y'>Anual</button></div></div>
+      <div class='cm-fg'><span class='cm-fl'>Visão</span><div class='cm-seg' role='group' aria-label='Visão'><button type='button' data-param='mode' data-value='abs'>Valor</button><button type='button' data-param='mode' data-value='pct'>% da receita</button><button type='button' data-param='mode' data-value='yoy'>Var. % a/a</button></div></div>
+      <div class='cm-fg'><span class='cm-fl'>Moeda</span><div class='cm-seg' role='group' aria-label='Moeda'><button type='button' data-param='ccy' data-value='usd'>US$ mi</button><button type='button' data-param='ccy' data-value='brl'>R$ mi</button></div></div>
+      <button type='button' class='cm-reset' data-reset>Limpar filtros</button>
     </div>
     <p class='cm-take' id='cm-take' data-draw='take'>—</p>
   </header>
 
-  <div class='cm-filters' id='cm-filters'>
-    <div class='cm-fg'><span class='cm-fl'>Período</span><div class='cm-seg' role='group' aria-label='Período'>
-      <button type='button' data-param='view' data-value='q'>Trimestre</button>
-      <button type='button' data-param='view' data-value='ytd'>Acumulado no ano</button>
-      <button type='button' data-param='view' data-value='y'>Anual</button></div></div>
-    <div class='cm-fg'><span class='cm-fl'>Visão</span><div class='cm-seg' role='group' aria-label='Visão'>
-      <button type='button' data-param='mode' data-value='abs'>Valor</button>
-      <button type='button' data-param='mode' data-value='pct'>% da receita</button>
-      <button type='button' data-param='mode' data-value='yoy'>Var. % a/a</button></div></div>
-    <div class='cm-fg'><span class='cm-fl'>Moeda</span><div class='cm-seg' role='group' aria-label='Moeda'>
-      <button type='button' data-param='ccy' data-value='usd'>US$ mi</button>
-      <button type='button' data-param='ccy' data-value='brl'>R$ mi</button></div></div>
-    <button type='button' class='cm-reset' data-reset>Limpar filtros</button>
-  </div>
-
   <div class='cm-kpis' id='cm-kpis'>
-    <article class='cm-kpi' id='kpi-maint'><h3>Manutenção (OPEX)</h3><div data-draw='kpi_maint'>—</div><p class='cm-def'>Linha “Maintenance expenses”. Consolidado.</p></article>
-    <article class='cm-kpi' id='kpi-pct'><h3>Manutenção / receita</h3><div data-draw='kpi_pct'>—</div><p class='cm-def'>Quanto da receita vai para a linha de manutenção.</p></article>
-    <article class='cm-kpi' id='kpi-da'><h3>Manutenção / D&amp;A</h3><div data-draw='kpi_da'>—</div><p class='cm-def'>Manutenção sobre depreciação e amortização.</p></article>
-    <article class='cm-kpi' id='kpi-ebitda'><h3>EBITDA ajustado</h3><div data-draw='kpi_ebitda'>—</div><p class='cm-def'>Conforme reportado pela empresa. Consolidado.</p></article>
-    <article class='cm-kpi' id='kpi-op'><h3>Margem operacional</h3><div data-draw='kpi_op'>—</div><p class='cm-def'>Resultado operacional sobre receita. Consolidado.</p></article>
-    <article class='cm-kpi' id='kpi-lev'><h3>Dívida líquida / EBITDA 12m</h3><div data-draw='kpi_lev'>—</div><p class='cm-def'>Dívida financeira menos caixa. Cálculo simples, não é o indicador da empresa.</p></article>
+    <article class='cm-kpi' id='kpi-maint'><span class='kic' style='background:#1f6feb'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><div class='kbody'><h3>Manutenção (OPEX)</h3><div data-draw='kpi_maint'>—</div></div></article>
+    <article class='cm-kpi' id='kpi-pct'><span class='kic' style='background:#17a56a'><svg viewBox='0 0 24 24' aria-hidden='true'><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><div class='kbody'><h3>Manutenção / receita</h3><div data-draw='kpi_pct'>—</div></div></article>
+    <article class='cm-kpi' id='kpi-da'><span class='kic' style='background:#c26a13'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span><div class='kbody'><h3>Manutenção / D&amp;A</h3><div data-draw='kpi_da'>—</div></div></article>
+    <article class='cm-kpi' id='kpi-ebitda'><span class='kic' style='background:#6b4fd6'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span><div class='kbody'><h3>EBITDA ajustado</h3><div data-draw='kpi_ebitda'>—</div></div></article>
+    <article class='cm-kpi' id='kpi-op'><span class='kic' style='background:#b83b6a'><svg viewBox='0 0 24 24' aria-hidden='true'><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></span><div class='kbody'><h3>Margem operacional</h3><div data-draw='kpi_op'>—</div></div></article>
+    <article class='cm-kpi' id='kpi-lev'><span class='kic' style='background:#0e8a9e'><svg viewBox='0 0 24 24' aria-hidden='true'><path d="M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-6 10 6z"/></svg></span><div class='kbody'><h3>Dív. líq. / EBITDA 12m</h3><div data-draw='kpi_lev'>—</div></div></article>
   </div>
 
-  <section class='cm-card' id='sec-maint'>
-    <h2>Despesa de manutenção ao longo do tempo</h2>
-    <p class='cm-sub'>Linha “Maintenance expenses” da nota de despesas por natureza. Em R$, a variação anual inclui o efeito cambial.</p>
-    <div class='cm-chart' id='ch-maint' data-draw='c_maint'>—</div>
-  </section>
-
-  <div class='cm-grid' id='sec-rel'>
-    <section class='cm-card'>
-      <h2>Manutenção vs margens</h2>
-      <p class='cm-sub'>Tudo em % da receita. Mostra se o peso da manutenção caiu junto com as margens.</p>
-      <div class='cm-chart' id='ch-rel' data-draw='c_rel'>—</div>
-    </section>
-    <section class='cm-card'>
-      <h2>Variação anual: manutenção, EBITDA e receita</h2>
-      <p class='cm-sub'>Compara cada período com o mesmo período do ano anterior. Existe a partir de 1T26 (ou 2025 no anual).</p>
-      <div class='cm-chart' id='ch-yoy' data-draw='c_yoy'>—</div>
-    </section>
+  <div class='cm-row a' id='sec-maint'>
+    <section class='cm-card'><h2>Despesa de manutenção ao longo do tempo</h2><p class='cm-sub'>Linha “Maintenance expenses”. Em R$, a variação anual inclui o efeito cambial.</p><div class='cm-chart' id='ch-maint' data-draw='c_maint'>—</div></section>
+    <section class='cm-card'><h2>Alavanca da manutenção</h2><p class='cm-sub'>Peso sobre o EBITDA ajustado, 9M26.</p><div id='gauge' data-draw='gauge'>—</div></section>
+    <section class='cm-card' id='sec-yoy'><h2>Variação anual</h2><p class='cm-sub'>Manutenção, EBITDA e receita vs mesmo período do ano anterior.</p><div class='cm-chart' id='ch-yoy' data-draw='c_yoy'>—</div></section>
   </div>
 
-  <div class='cm-grid' id='sec-fin'>
-    <section class='cm-card'>
-      <h2>Pressão financeira e caixa</h2>
-      <p class='cm-sub'>EBITDA, caixa operacional e custos financeiros. Segue os filtros de visão e moeda.</p>
-      <div class='cm-chart' id='ch-fin' data-draw='c_fin'>—</div>
-    </section>
-    <section class='cm-card'>
-      <h2>Manutenção e CAPEX frente ao desgaste</h2>
-      <p class='cm-sub'>CAPEX = adições ao imobilizado no caixa. D&amp;A = depreciação e amortização.</p>
-      <div class='cm-chart' id='ch-asset' data-draw='c_asset'>—</div>
-    </section>
+  <div class='cm-row b'>
+    <section class='cm-card' id='sec-rel'><h2>Manutenção vs margens</h2><p class='cm-sub'>Tudo em % da receita.</p><div class='cm-chart' id='ch-rel' data-draw='c_rel'>—</div></section>
+    <section class='cm-card' id='sec-fin'><h2>Pressão financeira e caixa</h2><p class='cm-sub'>EBITDA, caixa operacional e custos financeiros.</p><div class='cm-chart' id='ch-fin' data-draw='c_fin'>—</div></section>
+    <section class='cm-card'><h2>Manutenção e CAPEX frente ao desgaste</h2><p class='cm-sub'>Razões sobre D&amp;A. CAPEX = adições ao imobilizado.</p><div class='cm-chart' id='ch-asset' data-draw='c_asset'>—</div></section>
   </div>
 
   <section class='cm-card' id='sec-bal'>
@@ -170,8 +210,9 @@ body.dark{background:#10100f}
       <div><h2>Estoque de peças de reposição</h2><div class='cm-chart' id='ch-parts' data-draw='b_parts'>—</div></div>
       <div><h2>Desgaste da planta e equipamentos</h2><div class='cm-chart' id='ch-dep' data-draw='b_dep'>—</div></div>
     </div>
-    <p class='cm-sub'>* Em set/26 uma unidade de embalagens corrugadas foi reclassificada como mantida para venda. Isso reduz o estoque de peças e altera a base do desgaste da planta; parte da variação não reflete decisão de manutenção.</p>
+    <p class='cm-sub'>* Em set/26 uma unidade de embalagens foi reclassificada como mantida para venda. Isso reduz o estoque de peças e altera a base do desgaste da planta; parte da variação não reflete decisão de manutenção.</p>
   </section>
+
 
   <section class='cm-card' id='sec-tbl'>
     <h2>Tabela dos indicadores</h2>
@@ -183,6 +224,7 @@ body.dark{background:#10100f}
       </table>
     </div>
   </section>
+
 
   <h2 class='cm-sec' id='cm-ins-h'>O que o DRE conta sobre a manutenção</h2>
   <section class='cm-lead' id='cm-lead'>
@@ -207,6 +249,7 @@ body.dark{background:#10100f}
     </ul>
   </details>
   <p class='cm-src'>Fonte: demonstrações financeiras trimestrais e anual consolidadas (IFRS), em US$ mil; câmbio: PTAX de venda do Banco Central.</p>
+  </main>
 </div>
 
 <script>// https://d3js.org v7.9.0 Copyright 2010-2023 Mike Bostock
@@ -215,7 +258,7 @@ body.dark{background:#10100f}
 <script>window.__DATA__={"fin":[{"period":"1T25","year":2025,"quarter":1,"revenue":1813006,"cogs":1479187,"op_profit":65874,"fin_costs":77402,"net_income":49789,"ebitda":277900,"maint":107763,"da":165081,"cfo":266131,"capex_ppe":103666,"capex_other":43996},{"period":"2T25","year":2025,"quarter":2,"revenue":1906917,"cogs":1495143,"op_profit":134423,"fin_costs":85103,"net_income":80901,"ebitda":331898,"maint":113551,"da":161768,"cfo":275764,"capex_ppe":135780,"capex_other":65999},{"period":"3T25","year":2025,"quarter":3,"revenue":1864589,"cogs":1516751,"op_profit":84743,"fin_costs":84187,"net_income":33808,"ebitda":260171,"maint":92402,"da":159060,"cfo":225328,"capex_ppe":104066,"capex_other":72240},{"period":"4T25","year":2025,"quarter":4,"revenue":1890584,"cogs":1554249,"op_profit":130218,"fin_costs":91347,"net_income":37254,"ebitda":261764,"maint":87133,"da":177630,"cfo":297806,"capex_ppe":121089,"capex_other":46246},{"period":"1T26","year":2026,"quarter":1,"revenue":1816957,"cogs":1489174,"op_profit":53318,"fin_costs":90199,"net_income":24778,"ebitda":255440,"maint":106023,"da":173587,"cfo":221450,"capex_ppe":118967,"capex_other":65856},{"period":"2T26","year":2026,"quarter":2,"revenue":1915797,"cogs":1552348,"op_profit":59105,"fin_costs":95197,"net_income":8675,"ebitda":269605,"maint":100672,"da":165496,"cfo":343544,"capex_ppe":105506,"capex_other":64884},{"period":"3T26","year":2026,"quarter":3,"revenue":1931917,"cogs":1589221,"op_profit":63220,"fin_costs":111743,"net_income":-7181,"ebitda":251987,"maint":87321,"da":171355,"cfo":283656,"capex_ppe":142139,"capex_other":64834},{"period":"FY24","year":2024,"quarter":0,"revenue":7742688,"cogs":5851651,"op_profit":848376,"fin_costs":314714,"net_income":491099,"ebitda":1541762,"maint":470138,"da":592180,"cfo":1045596,"capex_ppe":516052,"capex_other":197043}],"bs":[{"point":"Dez/24","ref":"2024-12","parts":323775,"fin_debt":5614332,"cash":631632,"plant_gross":8954783,"plant_accdep":4965596,"plant_fully_dep":1461343},{"point":"Dez/25","ref":"2025-12","parts":344834,"fin_debt":6078659,"cash":812368,"plant_gross":9616038,"plant_accdep":5501302,"plant_fully_dep":1723138},{"point":"Mar/26","ref":"2026-03","parts":352915,"fin_debt":6078807,"cash":770203,"plant_gross":9696695,"plant_accdep":5643845,"plant_fully_dep":1705420},{"point":"Jun/26","ref":"2026-06","parts":358071,"fin_debt":6134519,"cash":815752,"plant_gross":9809364,"plant_accdep":5743354,"plant_fully_dep":1737330},{"point":"Set/26","ref":"2026-09","parts":312601,"fin_debt":6080832,"cash":775567,"plant_gross":9378181,"plant_accdep":5550866,"plant_fully_dep":1789795}],"fx":[{"kind":"avg","ref":"2024-01","rate":4.9144},{"kind":"avg","ref":"2024-02","rate":4.96439},{"kind":"avg","ref":"2024-03","rate":4.98014},{"kind":"avg","ref":"2024-04","rate":5.1291},{"kind":"avg","ref":"2024-05","rate":5.13305},{"kind":"avg","ref":"2024-06","rate":5.389},{"kind":"avg","ref":"2024-07","rate":5.542},{"kind":"avg","ref":"2024-08","rate":5.55261},{"kind":"avg","ref":"2024-09","rate":5.5375},{"kind":"avg","ref":"2024-10","rate":5.62411},{"kind":"avg","ref":"2024-11","rate":5.80706},{"kind":"avg","ref":"2024-12","rate":6.09703},{"kind":"avg","ref":"2025-01","rate":6.02177},{"kind":"avg","ref":"2025-02","rate":5.76565},{"kind":"avg","ref":"2025-03","rate":5.74681},{"kind":"avg","ref":"2025-04","rate":5.78368},{"kind":"avg","ref":"2025-05","rate":5.66739},{"kind":"avg","ref":"2025-06","rate":5.54706},{"kind":"avg","ref":"2025-07","rate":5.52849},{"kind":"avg","ref":"2025-08","rate":5.44209},{"kind":"avg","ref":"2025-09","rate":5.36741},{"kind":"avg","ref":"2025-10","rate":5.38553},{"kind":"avg","ref":"2025-11","rate":5.34085},{"kind":"avg","ref":"2025-12","rate":5.45309},{"kind":"avg","ref":"2026-01","rate":5.33802},{"kind":"avg","ref":"2026-02","rate":5.20062},{"kind":"avg","ref":"2026-03","rate":5.23159},{"kind":"avg","ref":"2026-04","rate":5.03308},{"kind":"avg","ref":"2026-05","rate":4.9837},{"kind":"avg","ref":"2026-06","rate":5.12757},{"kind":"avg","ref":"2026-07","rate":5.11395},{"kind":"avg","ref":"2026-08","rate":5.15316},{"kind":"avg","ref":"2026-09","rate":5.14472},{"kind":"close","ref":"2024-12","rate":6.192},{"kind":"close","ref":"2025-12","rate":5.5024},{"kind":"close","ref":"2026-03","rate":5.2194},{"kind":"close","ref":"2026-06","rate":5.1766},{"kind":"close","ref":"2026-09","rate":5.1809}]};</script>
 <script>/* Camada mínima que reproduz a API usada pelo painel (params, calc, draw, onData) fora do claude.ai. */
 window.dash = (function () {
-  const defaults = { view: 'q', mode: 'abs', ccy: 'usd', theme: 'light' };
+  const defaults = { view: 'q', mode: 'abs', ccy: 'usd', theme: 'dark' };
   const P = Object.assign({}, defaults);
   const calcs = {}, draws = [], cbs = [], drawn = {};
   const raw = window.__DATA__;
@@ -530,14 +573,23 @@ function kpi(el, src, r, o) {
   kids.push(CM.h('div', { class: 'kd ' + cls }, CM.h('span', { class: 'ka', 'aria-hidden': 'true' }, arrow), mark(o.dkey, o.dnf), ' ' + o.dunit + ' ', CM.h('span', { class: 'kc' }, o.cmp)));
   if (o.sub) kids.push(CM.h('div', { class: 'ks' }, o.sub.pre, mark(o.sub.key, o.sub.nf), o.sub.unit));
   el.replaceChildren(...kids);
+  const old = el.parentNode.parentNode.querySelector('.spark'); if (old) old.remove();
+  if (o.spark && o.spark.length > 1) {
+    const v = o.spark, w = 74, h = 30, mn = Math.min(...v), mx = Math.max(...v), sp = (mx - mn) || 1;
+    const pts = v.map((x, i) => [i / (v.length - 1) * (w - 6) + 3, h - 4 - (x - mn) / sp * (h - 9)]);
+    const ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'spark'); svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = '<polyline fill="none" stroke="' + o.color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="' + pts.map((p) => p.join(',')).join(' ') + '"/><circle cx="' + pts[pts.length - 1][0] + '" cy="' + pts[pts.length - 1][1] + '" r="2.8" fill="' + o.color + '"/>';
+    el.parentNode.parentNode.appendChild(svg);
+  }
 }
 const last = (rows) => rows[rows.length - 1];
-dash.draw('kpi_maint', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { key: 'maint', nf: CM.F.n1, unit: UNIT[s.ccy], dkey: 'maint_yoy', dnf: CM.F.s1, dunit: '%', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
-dash.draw('kpi_pct', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { key: 'maint_pct', nf: CM.F.n1, unit: '% da receita', dkey: 'maint_pct_d', dnf: CM.F.s1, dunit: 'p.p.', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
-dash.draw('kpi_da', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { key: 'maint_da', nf: CM.F.n2, unit: 'x a D&A', dkey: 'maint_da_d', dnf: CM.F.s2, dunit: 'x', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
-dash.draw('kpi_ebitda', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { key: 'sebitda', nf: CM.F.n1, unit: UNIT[s.ccy], dkey: 'sebitda_yoy', dnf: CM.F.s1, dunit: '%', pol: 'up', cmp: 'vs ' + PREV[s.view], sub: { pre: 'Margem ', key: 'sebitda_pct', nf: CM.F.n1, unit: '%' } })));
-dash.draw('kpi_op', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { key: 'op_pct', nf: CM.F.n1, unit: '% da receita', dkey: 'op_pct_d', dnf: CM.F.s1, dunit: 'p.p.', pol: 'up', cmp: 'vs ' + PREV[s.view] })));
-dash.draw('kpi_lev', (el) => ok(el, 'balance', (rows, s) => { const r = rows.find((x) => x.point === (s.view === 'y' ? 'Dez/25' : 'Set/26')); kpi(el, 'balance', r, { key: 'nd_ebitda', nf: CM.F.n2, unit: 'x EBITDA 12m', dkey: 'nd_d', dnf: CM.F.s2, dunit: 'x', pol: 'down', cmp: 'vs ' + (s.view === 'y' ? 'Dez/24' : 'Dez/25') }); }));
+dash.draw('kpi_maint', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { spark: col(rows, 'maint'), color: '#6db0ff', key: 'maint', nf: CM.F.n1, unit: UNIT[s.ccy], dkey: 'maint_yoy', dnf: CM.F.s1, dunit: '%', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
+dash.draw('kpi_pct', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { spark: col(rows, 'maint_pct'), color: '#4be09b', key: 'maint_pct', nf: CM.F.n1, unit: '% da receita', dkey: 'maint_pct_d', dnf: CM.F.s1, dunit: 'p.p.', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
+dash.draw('kpi_da', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { spark: col(rows, 'maint_da'), color: '#ffb15c', key: 'maint_da', nf: CM.F.n2, unit: 'x a D&A', dkey: 'maint_da_d', dnf: CM.F.s2, dunit: 'x', pol: 'neu', cmp: 'vs ' + PREV[s.view] })));
+dash.draw('kpi_ebitda', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { spark: col(rows, 'sebitda'), color: '#b3a3ff', key: 'sebitda', nf: CM.F.n1, unit: UNIT[s.ccy], dkey: 'sebitda_yoy', dnf: CM.F.s1, dunit: '%', pol: 'up', cmp: 'vs ' + PREV[s.view], sub: { pre: 'Margem ', key: 'sebitda_pct', nf: CM.F.n1, unit: '%' } })));
+dash.draw('kpi_op', (el) => ok(el, 'metrics', (rows, s) => kpi(el, 'metrics', last(rows), { spark: col(rows, 'op_pct'), color: '#ff8fb5', key: 'op_pct', nf: CM.F.n1, unit: '% da receita', dkey: 'op_pct_d', dnf: CM.F.s1, dunit: 'p.p.', pol: 'up', cmp: 'vs ' + PREV[s.view] })));
+dash.draw('kpi_lev', (el) => ok(el, 'balance', (rows, s) => { const r = rows.find((x) => x.point === (s.view === 'y' ? 'Dez/25' : 'Set/26')); kpi(el, 'balance', r, { spark: col(rows, 'nd_ebitda'), color: '#5fd0e0', key: 'nd_ebitda', nf: CM.F.n2, unit: 'x EBITDA 12m', dkey: 'nd_d', dnf: CM.F.s2, dunit: 'x', pol: 'down', cmp: 'vs ' + (s.view === 'y' ? 'Dez/24' : 'Dez/25') }); }));
 
 dash.draw('c_maint', (el) => ok(el, 'metrics', (rows, s) => {
   CM.chart(el, { cats: col(rows, 'label'), type: 'bar', unit: munit(s), fmt: MFMT[s.mode], axis: MAX[s.mode], aria: 'Despesa de manutenção por período', series: [{ name: 'Manutenção (OPEX)', color: COL.maint, values: col(rows, mk('maint', s.mode)) }] });
@@ -565,6 +617,12 @@ dash.draw('b_parts', (el) => ok(el, 'balance', (rows, s) => {
 }));
 dash.draw('b_dep', (el) => ok(el, 'balance', (rows) => {
   CM.chart(el, { cats: rows.map((r) => r.point + (r.point === 'Set/26' ? '*' : '')), type: 'line', unit: '% do valor bruto de planta e equipamentos', fmt: CM.f.pct, axis: MAX.pct, aria: 'Desgaste da planta', series: [{ name: 'Deprec. acumulada', color: COL.dep, values: col(rows, 'dep_pct') }, { name: 'Totalmente depreciado em uso', color: COL.fully, values: col(rows, 'fully_pct') }] });
+}));
+
+dash.draw('gauge', (el) => ok(el, 'story', (rows) => {
+  const r = rows[0], F = CM.F, R = 74, C = 2 * Math.PI * R, fr = r.me9_26 / 100;
+  el.innerHTML = '<div class="gauge"><div class="ring"><svg viewBox="0 0 176 176"><circle cx="88" cy="88" r="' + R + '" fill="none" stroke="rgba(128,150,190,.25)" stroke-width="16"/><circle cx="88" cy="88" r="' + R + '" fill="none" stroke="#4c9bff" stroke-width="16" stroke-linecap="round" stroke-dasharray="' + (C * fr) + ' ' + C + '" transform="rotate(-90 88 88)"/></svg><div class="mid"><b>' + F.n1.format(r.me9_26) + '%</b><span>manutenção sobre<br>o EBITDA, 9M26</span></div></div>' +
+   '<div class="legend2"><div><span><i style="background:#4c9bff"></i>9M26</span><b>' + F.n1.format(r.me9_26) + '%</b></div><div><span><i style="background:#8aa0be"></i>9M25</span><b>' + F.n1.format(r.me9_25) + '%</b></div><div><span><i style="background:#ffb020"></i>Cortar 10%</span><b>US$ ' + F.n1.format(r.sens_usd) + ' mi</b></div><div><span><i style="background:#ff8a4c"></i>Efeito na margem</span><b>' + F.n2.format(r.sens_pp) + ' p.p.</b></div></div></div>';
 }));
 
 const COLS = [['period', null], ['rev', CM.F.n1], ['ebitda', CM.F.n1], ['ebitda_pct', CM.F.n1], ['maint', CM.F.n1], ['maint_pct', CM.F.n1], ['maint_da', CM.F.n2], ['op', CM.F.n1], ['op_pct', CM.F.n1], ['fin', CM.F.n1], ['cfo', CM.F.n1], ['capex', CM.F.n1]];
@@ -618,6 +676,17 @@ dash.onData(() => {
   s.theme = th;
   document.querySelectorAll('[data-param]').forEach((b) => { const on = s[b.dataset.param] === b.dataset.value; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
 });
+
+(function () {
+  const links = [...document.querySelectorAll('[data-nav]')];
+  const set = (id) => links.forEach((l) => l.classList.toggle('on', l.dataset.nav === id));
+  set('cm-top');
+  const tg = links.map((l) => document.getElementById(l.dataset.nav)).filter(Boolean);
+  window.addEventListener('scroll', () => {
+    let cur = tg[0].id; tg.forEach((t) => { if (t.getBoundingClientRect().top < window.innerHeight * 0.35) cur = t.id; });
+    set(cur);
+  }, { passive: true });
+  links.forEach((l) => l.addEventListener('click', (e) => { const t = document.getElementById(l.dataset.nav); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); if (t.tagName === 'DETAILS') t.open = true; } }));
+})();
 </script>
-<script>dash.start();</script>
-</body></html>
+<script>dash.start();</script></body></html>
